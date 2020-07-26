@@ -5,11 +5,11 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 
 public class ApplicationUser implements UserDetails {
 
-    private final List<? extends GrantedAuthority> authorities;
+    private final Set<? extends GrantedAuthority> authorities;
     private final String password;
     private final String username;
     private final boolean accountExpired;
@@ -18,7 +18,7 @@ public class ApplicationUser implements UserDetails {
     private final boolean enabled;
 
     @Autowired
-    public ApplicationUser(List<? extends GrantedAuthority> authorities, String password, String username, boolean accountExpired, boolean accountLocked, boolean credentialsExpired, boolean enabled) {
+    public ApplicationUser(String username, String password,  Set<? extends GrantedAuthority> authorities, boolean accountExpired, boolean accountLocked, boolean credentialsExpired, boolean enabled) {
         this.authorities = authorities;
         this.password = password;
         this.username = username;
